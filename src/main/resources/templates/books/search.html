@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/books/search}" method="get">
+    <input type="text" name="first_words" />
+    <button type="submit">Искать</button>
+</form>
+<div th:if="${noResults}">
+    <p>Книг с таким названием не найдено</p>
+</div>
+
+<div th:if="${books}">
+    <div th:each="book: ${books}">
+        <p  th:text="${book.getBookName()+' ,'+ book.getAuthor()+' ,'+book.getYear()+' ,'+ book.getOwner()}">Search Result</p>
+    </div>
+    </div>
+</div>
+</body>
+</html>
